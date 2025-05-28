@@ -6,13 +6,28 @@ Includes practices 1,
 
 //Includes
 #include <string>
-#include <iostream>
-using namespace std;
+#include <cctype>
+#include <cstdlib>
 
-
-int main() {
-cout << "Hello World!";
-return 0;
+std::string alphabet_position(const std::string &text) {
+  //Dec new string
+  std::string result;
+  bool first = true;
+  
+  for (unsigned char ch: text) {
+    if (std::isalpha(ch)) {
+      // lower cas and map
+      int  pos = std::tolower(ch) - 'a' + 1;
+      
+      if (!first)
+        result.push_back(' ');
+      first = false;
+      
+      result += std::to_string(pos);
+    }
+  }
+  
+  return result;
 }
 
 
